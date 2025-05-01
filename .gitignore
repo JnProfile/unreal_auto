@@ -1,0 +1,6 @@
+./VehicleTouch50/
+./test_failures/
+baselines/
+venv/
+__pycache__/
+
