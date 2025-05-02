@@ -4,22 +4,53 @@ This project contains automated tests for the Pixel Streaming web UI using Pytho
 
 ## Prerequisites
 
-- Python 3.12
+- Windows 10/11 machine
+- Python 3.13
 - Chrome browser installed
-- Pixel Streaming server running on http://127.0.0.1
 
 ## Setup
 
-1. Create a virtual environment (recommended):
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
+1. Clone repository:
+   ```bash
+   git clone https://github.com/JnProfile/unreal_auto.git
+   ```
 
-2. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+2. Download and unzip UE5 project:
+   - Place it in the root of unreal_auto directory
+   - Ensure the relative path of VehicleTouch50_Launch.lnk is: `unreal_auto/VehicleTouch50/VehicleTouch50_Launch.lnk`
+
+3. Start Pixel Streaming servers:
+   ```bash
+   # Run VehicleTouch50/PixelStreaming/WebServers/get_ps_servers.bat
+   # Run VehicleTouch50/PixelStreaming\WebServers\SignallingWebServer\platform_scripts\cmd\setup.bat
+   ```
+
+4. Start the Signalling Server:
+   ```bash
+   # Run Start_WithTURN_SignallingServer.ps1 for the first time
+   ```
+
+5. Launch and test the application:
+   - Run VehicleTouch50_Launch
+   - Test the connection at http://127.0.0.1
+   - Close app and signaling server
+
+6. Set up Python environment:
+   ```bash
+   # Create virtual environment
+   python -m venv venv
+   
+   # Activate virtual environment
+   # On Windows:
+   venv\Scripts\activate
+   # On Unix/MacOS:
+   source venv/bin/activate
+   ```
+
+7. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ## Running Tests
 

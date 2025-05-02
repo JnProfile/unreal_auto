@@ -1,6 +1,7 @@
-./VehicleTouch50/
-./test_failures/
+VehicleTouch50
 baselines/
 venv/
+.pytest_cache/
 __pycache__/
-
+test_failures/
+test_logs/
