@@ -89,6 +89,6 @@ The main test scenario covers:
 
 ## Notes
 
-- The first time you run the tests, baseline screenshots will be created automatically
+- The first time you run the tests, baseline screenshots will be created automatically, next tests run will be with comparison of screenshots and baselines
 - Make sure the Pixel Streaming server is running before executing tests
 - Some tests include small delays to account for UI state changes 
