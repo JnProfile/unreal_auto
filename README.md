@@ -23,19 +23,14 @@ This project contains automated tests for the Pixel Streaming web UI using Pytho
    ```bash
    # Run VehicleTouch50/PixelStreaming/WebServers/get_ps_servers.bat
    # Run VehicleTouch50/PixelStreaming\WebServers\SignallingWebServer\platform_scripts\cmd\setup.bat
+   # Run Start_WithTURN_SignallingServer.ps1
    ```
 
-4. Start the Signalling Server:
-   ```bash
-   # Run Start_WithTURN_SignallingServer.ps1 for the first time
-   ```
-
-5. Launch and test the application:
+4. Launch and test the application:
    - Run VehicleTouch50_Launch
    - Test the connection at http://127.0.0.1
-   - Close app and signaling server
 
-6. Set up Python environment:
+5. Set up Python environment:
    ```bash
    # Create virtual environment
    python -m venv venv
@@ -47,12 +42,22 @@ This project contains automated tests for the Pixel Streaming web UI using Pytho
    source venv/bin/activate
    ```
 
-7. Install dependencies:
+6. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
 ## Running Tests
+
+Before running tests, make sure to:
+1. Start Pixel Streaming servers manually(Start_WithTURN_SignallingServer.ps1 has to be lauched (Setup article 3)):
+   - Run VehicleTouch50/PixelStreaming/WebServers/get_ps_servers.bat
+   - Run VehicleTouch50/PixelStreaming\WebServers\SignallingWebServer\platform_scripts\cmd\setup.bat
+   - Run Start_WithTURN_SignallingServer.ps1
+2. Launch the UE5 project manually (VehicleTouch50_Launch has to be lauched (Setup article 4))
+
+
+Once the UE5 project and Pixel Streaming servers are running, you can execute the tests:
 
 To run all tests:
 ```bash
@@ -90,5 +95,5 @@ The main test scenario covers:
 ## Notes
 
 - The first time you run the tests, baseline screenshots will be created automatically, next tests run will be with comparison of screenshots and baselines
-- Make sure the Pixel Streaming server is running before executing tests
+- IMPORTANT: Pixel Streaming and UE5 project must be launched manually before running tests, as automated launch is currently disabled due to reliability issues
 - Some tests include small delays to account for UI state changes 
