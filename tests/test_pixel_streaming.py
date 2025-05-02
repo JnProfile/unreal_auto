@@ -54,7 +54,8 @@ class ScreenshotLogger:
 @pytest.mark.nondestructive
 class TestPixelStreaming:
     @pytest.fixture(scope="class")
-    def page(self, driver, base_url, signalling_server, vehicle_touch_process, baselines_dir):
+    #def page(self, driver, base_url, signalling_server, vehicle_touch_process, baselines_dir):
+    def page(self, driver, base_url, baselines_dir):
         page = PixelStreamingPage(driver)
         page.load_page(base_url)
         return page
@@ -247,20 +248,3 @@ class TestPixelStreaming:
         is_similar, similarity = self.compare_screenshots(current_image, "reconnection_attempt", baselines_dir)
         logger.log_comparison("reconnection_attempt", similarity, 0.5, is_similar)
         assert is_similar, f"Reconnection attempt screenshot doesn't match baseline. Similarity: {similarity:.2f}%"
-
-    def test_vehicle_touch_closed(self, check_vehicle_touch_closed):
-        """Test that VehicleTouch process is closed after tests"""
-        # Find and terminate VehicleTouch process
-        for proc in psutil.process_iter(['name']):
-            try:
-                if 'VehicleTouch50' in proc.info['name']:
-                    proc.terminate()
-                    proc.wait(timeout=5)
-            except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.TimeoutExpired):
-                pass
-        
-        # Wait a bit for the process to fully terminate
-        time.sleep(1) 
-        
-        # Check if process is closed
-        assert check_vehicle_touch_closed(), "VehicleTouch process is still running" 

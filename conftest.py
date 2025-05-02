@@ -50,6 +50,7 @@ def pytest_runtest_makereport(item, call):
 def base_url():
     return "http://127.0.0.1:80"
 
+''' Disabled because for correct behaviour, the signalling server must be running with admin rights.
 @pytest.fixture(scope="session")
 def signalling_server():
     """Fixture to start and manage the signalling server process"""
@@ -84,7 +85,9 @@ def signalling_server():
             p.kill()  # Force kill if still alive
     except (psutil.NoSuchProcess, psutil.AccessDenied):
         pass
+'''
 
+''' Disabled because for correct behaviour, the VehicleTouch process must be running with admin rights.
 @pytest.fixture(scope="session")
 def vehicle_touch_process():
     """Fixture to start and manage the VehicleTouch process"""
@@ -113,9 +116,12 @@ def vehicle_touch_process():
                     proc.kill()
             except (psutil.NoSuchProcess, psutil.AccessDenied):
                 pass
+'''
+
 
 @pytest.fixture(scope="session")
-def driver(signalling_server, vehicle_touch_process):
+#def driver(signalling_server, vehicle_touch_process):
+def driver():
     """Fixture to create and manage the WebDriver instance"""
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("--start-maximized")
