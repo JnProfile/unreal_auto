@@ -15,9 +15,7 @@ This project contains automated tests for the Pixel Streaming web UI using Pytho
    git clone https://github.com/JnProfile/unreal_auto.git
    ```
 
-2. Download and unzip UE5 project:
-   - Place it in the root of unreal_auto directory
-   - Ensure the relative path of VehicleTouch50_Launch.lnk is: `unreal_auto/VehicleTouch50/VehicleTouch50_Launch.lnk`
+2. Download and unzip UE5 project
 
 3. Start Pixel Streaming servers:
    ```bash
